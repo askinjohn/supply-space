@@ -1,0 +1,16 @@
+<div class="card-info">
+    <div class="login-info"> 
+     <h1 >SUPPLY SPACE</h1>   
+        <form [formGroup]='loginForm'>
+          <!-- <mat-form-field class="formField" floatLabel='auto'  appearance="fill" > -->
+            <input class="simple-text-field" matInput formControlName='email' type="text" placeholder="Enter Username">
+          <!-- </mat-form-field> -->
+          <!-- <mat-form-field class="formField" appearance="fill"floatLabel='auto'> -->
+            <input class="simple-text-field" matInput formControlName='password' type="text" placeholder="Enter Password">
+          <!-- </mat-form-field> -->
+        </form>
+      </div>
+        <button class="submit" (click)='login()' mat-raised-button color="primary" [disabled]='!loginForm.valid' routerLink=''>Login</button>
+</div>
+   
+

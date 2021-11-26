@@ -1,0 +1,62 @@
+<div class="stores-box">
+    <!-- <supply-space-add-product-dialog (addProduct)="pushProducts($event)" (closeDialog)='closeDialog()'  *ngIf='addProduct'></supply-space-add-product-dialog> -->
+   <ng-container *ngIf='!addProduct'>
+    <h1>Enter your Store Details</h1>
+    <form [formGroup]='storeForm'>
+        <div class="form-page">
+            <div class="form-element">
+                <label>Name of your store</label>
+                <input formControlName='name' class="simple-text-field">
+            </div>
+            <div class="form-element">
+                <label>GSTIN</label>
+                <input formControlName='gstin' class="simple-text-field">
+            </div>
+            <div class="form-element">
+                <label>Mobile</label>
+                <input formControlName='mobile' class="simple-text-field">
+            </div>
+            <div class="address-bar">
+                <label>Address</label>
+                <textarea formControlName='address' class="simple-text-field"></textarea>
+            </div>
+            <div class="form-element">
+                <label>Contact Name</label>
+                <input formControlName='contactName' class="simple-text-field">
+            </div>
+            <div class="form-element">
+                <label>E-mail</label>
+                <input formControlName='email' class="simple-text-field">
+            </div>
+        </div>
+    </form>
+    <div class="product-table">
+        <div class="title">
+            <h2>Products</h2><button  mat-mini-fab [disabled]='!storeForm.valid'  (click)='openDialog()'><mat-icon>add</mat-icon></button>
+        </div>
+        <h4 *ngIf='!storeForm.valid'>*Fill your Store Details to add Products</h4>
+        <ng-container *ngIf='products?.length>0'>
+            <table >
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Disc. Price</th>
+                  <th>Images</th>
+                </tr>
+                <tr class="product-row" *ngFor='let product of products' (click)='clickedRow(product.id)'>
+                  <td>{{product.name}}</td>
+                  <td>{{product.desc}}</td>
+                  <td>{{product.price}}</td>
+                  <td>{{product.discPrice}}</td>
+                  <td class="img-td"><img *ngFor='let image of product.images' [src]="image.url" alt=""></td>
+                </tr>
+              </table>
+              <button class="add-button" (click)='addStore()' [disabled]='!storeForm.valid' mat-raised-button>Add Store</button>
+        </ng-container>
+        
+    </div>
+ 
+   </ng-container>
+  
+</div>

@@ -1,0 +1,32 @@
+<div class="stores-box">
+<ng-container *ngIf='storeObs | async ; let store'>
+    <h1>{{store.name}}</h1>  
+    <div class="store-detail">
+            <h4>Contact: {{store.contactName}}</h4>     
+            <h4>Email: {{store.email}}</h4> 
+            <h4>Mobile: {{store.mobile}}</h4>
+            <h4>GSTIN: {{store.gstin}}</h4>
+            <h4>Address: {{store.address}}</h4>
+    </div>
+    <div class="products-section" *ngIf='store.products.length>0'>
+        <h3>Products</h3>
+        <table >
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Disc. Price</th>
+              <th>Images</th>
+            </tr>
+            <tr *ngFor='let product of store.products'>
+              <td>{{product.name}}</td>
+              <td class="prod-desc">{{product.desc}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.discPrice}}</td>
+              <td class="img-td" *ngIf='!product.images'>No Images</td>
+              <td class="img-td" *ngIf='product.images'><img *ngFor='let image of product.images' [src]="image.url" alt=""></td>
+            </tr>
+          </table>
+    </div>
+</ng-container>
+</div>

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "supply-space-82586"
+  },
+  "targets": {
+    "supply-space-82586": {
+      "hosting": {
+        "supply-space-web": [
+          "supply-space-82586"
+        ]
+      }
+    }
+  }
+}

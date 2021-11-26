@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "projects": {
+    "dataservice": {
+      "projectType": "library",
+      "root": "libs/dataservice",
+      "sourceRoot": "libs/dataservice/src",
+      "prefix": "supply-space",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/dataservice"],
+          "options": {
+            "jestConfig": "libs/dataservice/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/dataservice/src/**/*.ts",
+              "libs/dataservice/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "supply-space-web": {
+      "projectType": "application",
+      "root": "apps/supply-space-web",
+      "sourceRoot": "apps/supply-space-web/src",
+      "prefix": "supply-space",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/supply-space-web",
+            "index": "apps/supply-space-web/src/index.html",
+            "main": "apps/supply-space-web/src/main.ts",
+            "polyfills": "apps/supply-space-web/src/polyfills.ts",
+            "tsConfig": "apps/supply-space-web/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/supply-space-web/src/favicon.ico",
+              "apps/supply-space-web/src/assets"
+            ],
+            "styles": ["apps/supply-space-web/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/supply-space-web/src/environments/environment.ts",
+                  "with": "apps/supply-space-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "supply-space-web:build:production"
+            },
+            "development": {
+              "browserTarget": "supply-space-web:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "supply-space-web:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/supply-space-web/src/**/*.ts",
+              "apps/supply-space-web/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/supply-space-web"],
+          "options": {
+            "jestConfig": "apps/supply-space-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "supply-space-web-e2e": {
+      "root": "apps/supply-space-web-e2e",
+      "sourceRoot": "apps/supply-space-web-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/supply-space-web-e2e/cypress.json",
+            "devServerTarget": "supply-space-web:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "supply-space-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/supply-space-web-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["supply-space-web"]
+    }
+  },
+  "schematics": { "@schematics/angular:component": { "style": "scss" } }
+}

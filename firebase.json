@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "target":"supply-space-web",
+    "public": "dist/apps/supply-space-web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+
+
+.address-bar{
+    width: 80%;
+    margin: 3%;
+}
+
+.product-table{
+    margin-top: 20px;
+    margin-inline:3%;
+}
+
+ .product-row{
+     cursor: pointer;
+ }
+
+ .add-button{
+     margin-top: 2%;
+     background-color: black;
+     color: white;
+ }
+
+ h4{
+     color: red;
+ }
+
+ .title button:hover:not(:disabled){
+    background-color: black;
+    color: white;
+ }

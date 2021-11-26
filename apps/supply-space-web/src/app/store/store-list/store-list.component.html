@@ -1,0 +1,21 @@
+<div class="stores-box">
+  <div class="title">
+    <h1>Stores</h1>
+    <button mat-mini-fab (click)="createNewStore()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="stores" *ngIf="storesObs | async; let stores">
+    <div *ngFor="let store of stores" class="store-cards">
+      <div class="header" [routerLink]="'stores/' + store.id">
+        <p>{{ store.name }}</p>
+        <p>GSTIN:{{ store.gstin }}</p>
+        <p>
+          {{ store.address }}
+        </p>
+        <button [routerLink]="'new-store/' + store.id" mat-button>Edit</button>
+      </div>
+    </div>
+    <div class="no-data" *ngIf="stores.length === 0">No Stores Available</div>
+  </div>
+</div>

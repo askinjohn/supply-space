@@ -1,0 +1,18 @@
+.login-card {
+  max-width: 400px;
+  margin: auto;
+  border: 1px solid grey;
+  margin-top: 20%;
+  flex-direction: column;
+  box-shadow: 2px 2px grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width:670px) {
+   .login-card{
+       margin-top: 30%;
+       max-width: 70%;
+   }
+}

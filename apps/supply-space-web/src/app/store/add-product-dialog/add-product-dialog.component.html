@@ -1,0 +1,37 @@
+<div class="stores-box">
+    <div class="container">
+        <h2>Add Product</h2>
+        <form class="form" [formGroup]='productForm'>
+                <div class="form-element">
+                    <label>Name of the Product</label>
+                    <input formControlName='name' class="simple-text-field">
+                </div>
+                <div class="form-element">
+                    <label>Description</label>
+                    <input formControlName='desc' class="simple-text-field">
+                </div>
+                <div class="form-element">
+                    <label>Price</label>
+                    <input formControlName='price' class="simple-text-field">
+                </div>
+                <div class="form-element">
+                    <label>Discounted Price</label>
+                    <input formControlName='discPrice' class="simple-text-field">
+                </div>
+                <div class="file-upload">
+                    <label>Image</label>
+                    <input (change)='uploadImage($event)' [disabled]="uploadingImage==='INITIATED'" type="file" class="simple-text-field">
+                </div>
+                <ng-container *ngIf='imageUrls.length > 0'>
+                    <div *ngFor='let image of imageUrls' class="product-images">
+                        <img [src]="image.url" alt="">
+                    </div>
+                </ng-container>
+        </form>
+    </div>
+    <div>
+      
+        <button class="add-button" [disabled]='!productForm.valid'  mat-button  (click)='addProduct()'>Add</button>
+    </div>
+</div>
+
