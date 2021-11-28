@@ -7,14 +7,7 @@
   </div>
   <div class="stores" *ngIf="storesObs | async; let stores">
     <div *ngFor="let store of stores" class="store-cards">
-      <div class="header" [routerLink]="'stores/' + store.id">
-        <p>{{ store.name }}</p>
-        <p>GSTIN:{{ store.gstin }}</p>
-        <p>
-          {{ store.address }}
-        </p>
-        <button [routerLink]="'new-store/' + store.id" mat-button>Edit</button>
-      </div>
+        <supply-space-store-cards [routerLink]="'stores/'+store.id" (emitEditEvent)= 'storeDetails($event)'  [store]=store ></supply-space-store-cards>
     </div>
     <div class="no-data" *ngIf="stores.length === 0">No Stores Available</div>
   </div>

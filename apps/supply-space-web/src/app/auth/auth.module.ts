@@ -8,12 +8,14 @@ import {MatCardModule} from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     AuthScreenComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,

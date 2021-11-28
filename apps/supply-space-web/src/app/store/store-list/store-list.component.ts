@@ -27,4 +27,8 @@ storesObs:Observable<any>;
     this.router.navigate([`new-store/${uid}`])
   }
 
+  storeDetails(id){
+      this.router.navigate([`new-store/${id}`])
+  }
+
 }

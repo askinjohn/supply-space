@@ -43,13 +43,13 @@ export class CreateStoreComponent implements OnInit {
 
         this.products.push(...store.products)
       }));
-
     if(store){
      this.storeSubs = store.subscribe();
      this.periodicSave = 'ENABLED'
     }
     this.autoSave();
   }
+  
 clickedRow(productId){
   this.router.navigate([`new-store/${this.storeId}/${productId}`])
 }

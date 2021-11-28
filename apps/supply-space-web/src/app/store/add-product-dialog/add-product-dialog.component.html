@@ -4,7 +4,7 @@
         <form class="form" [formGroup]='productForm'>
                 <div class="form-element">
                     <label>Name of the Product</label>
-                    <input formControlName='name' class="simple-text-field">
+                    <input  formControlName='name' class="simple-text-field">
                 </div>
                 <div class="form-element">
                     <label>Description</label>
@@ -12,15 +12,15 @@
                 </div>
                 <div class="form-element">
                     <label>Price</label>
-                    <input formControlName='price' class="simple-text-field">
+                    <input type="number" formControlName='price' class="simple-text-field">
                 </div>
                 <div class="form-element">
                     <label>Discounted Price</label>
-                    <input formControlName='discPrice' class="simple-text-field">
+                    <input type="number"  formControlName='discPrice' class="simple-text-field">
                 </div>
                 <div class="file-upload">
                     <label>Image</label>
-                    <input (change)='uploadImage($event)' [disabled]="uploadingImage==='INITIATED'" type="file" class="simple-text-field">
+                    <input  (change)='uploadImage($event)' [disabled]="uploadingImage==='INITIATED'" type="file" class="simple-text-field">
                 </div>
                 <ng-container *ngIf='imageUrls.length > 0'>
                     <div *ngFor='let image of imageUrls' class="product-images">

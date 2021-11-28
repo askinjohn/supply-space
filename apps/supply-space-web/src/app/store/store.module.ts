@@ -16,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreService } from './store.service';
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import {MatListModule} from '@angular/material/list';
+import { ComponentModule } from '../component /component.module';
+
 
 
 @NgModule({
@@ -36,8 +38,10 @@ import {MatListModule} from '@angular/material/list';
     MatInputModule,
     MatTableModule,
     MatDialogModule,
+    ComponentModule,
     ReactiveFormsModule,
-    MatListModule
+    MatListModule,
+ 
   ],
   providers:[StoreService]
 })

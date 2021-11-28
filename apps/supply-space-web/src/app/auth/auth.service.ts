@@ -16,4 +16,8 @@ export class AuthService {
   logout() {
     return this.afa.signOut().then(() => this.router.navigate(['/login']));
   }
+
+  forgotPassword(email) {
+    return this.afa.sendPasswordResetEmail(email);
+  }
 }

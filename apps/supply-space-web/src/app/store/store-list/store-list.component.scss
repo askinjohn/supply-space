@@ -1,10 +1,6 @@
 
 
-.stores{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
+
 
 .no-data{
     display: flex;
@@ -12,15 +8,6 @@
     justify-content: center;
 }
 
-@media (max-width:670px) {
-    .stores{
-        flex-direction: column;
-    }
-   
-    .p{
-        font-size: 100%;
-    }
-}
 .store-image{
     width: 100%;
     height: 50%;
