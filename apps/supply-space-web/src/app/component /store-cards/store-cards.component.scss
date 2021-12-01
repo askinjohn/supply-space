@@ -1,15 +1,13 @@
-
-.header{
-    margin-top: 2%;
+.header {
+  margin-top: 2%;
 }
 
+@media (max-width: 670px) {
+  .stores {
+    flex-direction: column;
+  }
 
-@media (max-width:670px) {
-    .stores{
-        flex-direction: column;
-    }
-   
-    .p{
-        font-size: 100%;
-    }
+  .p {
+    font-size: 100%;
+  }
 }

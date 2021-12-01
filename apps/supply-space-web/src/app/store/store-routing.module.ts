@@ -7,42 +7,34 @@ import { CreateStoreComponent } from './create-store/create-store.component';
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import { AddProductDialogComponent } from './add-product-dialog/add-product-dialog.component';
 
-
-
-
-const routes:Routes=[
+const routes: Routes = [
   {
-    path:'',
-    component:HomeComponent,
-    children:[
-    
+    path: '',
+    component: HomeComponent,
+    children: [
       {
-        path:'',
-        component:StoreListComponent
+        path: '',
+        component: StoreListComponent,
       },
       {
-        path:'new-store/:id',
-        component:CreateStoreComponent
+        path: 'new-store/:id',
+        component: CreateStoreComponent,
       },
       {
-        path:'stores/:id',
-        component:StoreDetailsComponent
+        path: 'stores/:id',
+        component: StoreDetailsComponent,
       },
       {
-        path:'new-store/:storeId/:productId',
-        component:AddProductDialogComponent
-      }
-    ]
-  }
-]
-
+        path: 'new-store/:storeId/:productId',
+        component: AddProductDialogComponent,
+      },
+    ],
+  },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule
-  ],
-  exports:[RouterModule]
+  imports: [RouterModule.forChild(routes), CommonModule],
+  exports: [RouterModule],
 })
-export class StoreRoutingModule { }
+export class StoreRoutingModule {}

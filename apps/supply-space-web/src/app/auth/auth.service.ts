@@ -20,4 +20,10 @@ export class AuthService {
   forgotPassword(email) {
     return this.afa.sendPasswordResetEmail(email);
   }
+  get user(){
+    return this.afa.user
+  }
+  signUp(){
+
+  }
 }

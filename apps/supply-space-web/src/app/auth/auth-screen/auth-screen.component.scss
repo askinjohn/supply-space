@@ -10,9 +10,17 @@
   align-items: center;
 }
 
-@media (max-width:670px) {
-   .login-card{
-       margin-top: 30%;
-       max-width: 70%;
-   }
+@media (max-width: 670px) {
+  .login-card {
+    margin-top: 30%;
+    max-width: 70%;
+  }
+}
+
+.card-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 8%;
 }

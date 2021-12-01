@@ -1,0 +1,28 @@
+<form [formGroup]="storeForm">
+  <div class="form-page">
+    <div class="form-element">
+      <label>Name of your store</label>
+      <input formControlName="name" class="simple-text-field" />
+    </div>
+    <div class="form-element">
+      <label>GSTIN</label>
+      <input formControlName="gstin" class="simple-text-field" />
+    </div>
+    <div class="form-element">
+      <label>Mobile</label>
+      <input formControlName="mobile" class="simple-text-field" />
+    </div>
+    <div class="address-bar">
+      <label>Address</label>
+      <textarea formControlName="address" class="simple-text-field"></textarea>
+    </div>
+    <div class="form-element">
+      <label>Contact Name</label>
+      <input formControlName="contactName" class="simple-text-field" />
+    </div>
+    <div class="form-element">
+      <label>E-mail</label>
+      <input formControlName="email" class="simple-text-field" />
+    </div>
+  </div>
+</form>

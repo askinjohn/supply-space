@@ -16,7 +16,6 @@ import { take } from 'rxjs/operators';
 export class AddProductDialogComponent implements OnInit {
   productForm: FormGroup;
   uploadingImage: string;
-
   downloadURL: any;
   imageUrls = [];
   storeId: FormGroup;
@@ -24,7 +23,7 @@ export class AddProductDialogComponent implements OnInit {
   productSubs: any;
   periodicSave: string;
   interval: NodeJS.Timeout;
-  
+
   constructor(
     private fb: FormBuilder,
     private afs: AngularFireStorage,
@@ -54,7 +53,7 @@ export class AddProductDialogComponent implements OnInit {
     );
     if (product) {
       this.productSubs = product.subscribe();
-      this.periodicSave = 'ENABLED'
+      this.periodicSave = 'ENABLED';
     }
 
     this.autoSave();
@@ -71,8 +70,7 @@ export class AddProductDialogComponent implements OnInit {
         this.uploadingImage !== 'INITIATED' &&
         this.productForm.valid
       )
-  
-        this.saveProduct()
+        this.saveProduct();
     }, 2000);
   }
 
@@ -109,7 +107,6 @@ export class AddProductDialogComponent implements OnInit {
             this.downloadURL.subscribe((url) => {
               this.imageUrls.push({ id: uid, url: url });
               this.uploadingImage = 'COMPLETED';
-     
             });
           })
         )

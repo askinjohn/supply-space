@@ -1,0 +1,34 @@
+<div class="login-info">
+  <form [formGroup]="signUpForm">
+    <input
+      class="simple-text-field"
+      matInput
+      formControlName="name"
+      type="text"
+      placeholder="Enter Name"
+    />
+    <input
+      class="simple-text-field"
+      matInput
+      formControlName="mobile"
+      type="tel"
+      placeholder="Enter Mobile"
+    />
+    <input
+      class="simple-text-field"
+      matInput
+      formControlName="email"
+      type="email"
+      placeholder="Enter Email"
+    />
+  </form>
+  <button
+    class="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="!signUpForm.valid"
+    routerLink=""
+  >
+    Sign Up
+  </button>
+</div>

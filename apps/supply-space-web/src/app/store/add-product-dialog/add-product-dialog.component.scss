@@ -1,42 +1,40 @@
-.box{
-    background-color: khaki;
-    margin-inline: 20%;
+.box {
+  background-color: khaki;
+  margin-inline: 20%;
 }
 
-.file-upload{
-    margin-inline: 3%;
+.file-upload {
+  margin-inline: 3%;
 }
 
-
-button{
-    background-color: grey;
-    margin: 3%;
+button {
+  background-color: grey;
+  margin: 3%;
 }
 
-.form-element label{
-    margin-top: 3%;
+.form-element label {
+  margin-top: 3%;
 }
 
-.add-button{
-    background-color: black;
-    color: white;
+.add-button {
+  background-color: black;
+  color: white;
 }
 
-.add-button:disabled{
-    background-color: rgb(212, 212, 212);
-    color: white;
+.add-button:disabled {
+  background-color: rgb(212, 212, 212);
+  color: white;
 }
 
-input .file-upload{
-    background-color: white;
+input .file-upload {
+  background-color: white;
 }
-.product-images{
-    display: flex;
-    flex-direction: row;
+.product-images {
+  display: flex;
+  flex-direction: row;
 }
-.product-images img{
-    margin-inline: 3%;
-    max-width: 140px;
-    max-height: 100px;
+.product-images img {
+  margin-inline: 3%;
+  max-width: 140px;
+  max-height: 100px;
 }
-

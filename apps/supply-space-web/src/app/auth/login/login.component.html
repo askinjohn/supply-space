@@ -1,25 +1,22 @@
-<div class="card-info">
-  <div class="login-info">
-    <h1>SUPPLY SPACE</h1>
-    <form [formGroup]="loginForm">
-      <input
-        class="simple-text-field"
-        matInput
-        formControlName="email"
-        type="email"
-        placeholder="Enter Username"
-      />
+<div class="login-info">
+  <form [formGroup]="loginForm">
+    <input
+      class="simple-text-field"
+      matInput
+      formControlName="email"
+      type="email"
+      placeholder="Enter Username"
+    />
 
-      <input
-        class="simple-text-field"
-        matInput
-        formControlName="password"
-        type="password"
-        placeholder="Enter Password"
-      />
-      
-    </form>
-  </div>
+    <input
+      class="simple-text-field"
+      matInput
+      formControlName="password"
+      type="password"
+      placeholder="Enter Password"
+    />
+  </form>
+
   <button
     class="submit"
     (click)="login()"
@@ -36,6 +33,14 @@
     color="primary"
     routerLink="forgot-password"
   >
-   Forgot Password
+    Forgot Password
   </button>
+  <button
+  class="submit"
+  mat-raised-button
+  color="primary"
+  routerLink="sign-up"
+>
+  Sign-Up
+</button>
 </div>

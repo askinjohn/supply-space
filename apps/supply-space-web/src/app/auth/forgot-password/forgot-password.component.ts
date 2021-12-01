@@ -6,16 +6,14 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'supply-space-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent implements OnInit {
-  email = new FormControl('')
+  email = new FormControl('');
   hideSuccessMessage;
-  constructor(private as:AuthService,private router:Router) { }
+  constructor(private as: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   sendResetPasswordLink() {
     const emailValue = this.email.value;
@@ -27,5 +25,4 @@ export class ForgotPasswordComponent implements OnInit {
       }, 4000);
     });
   }
-
 }
