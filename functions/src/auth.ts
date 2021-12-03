@@ -7,8 +7,10 @@ export const checkAuthentication = functions.https.onCall(
     const allUsers = await auth.listUsers();
     const user = allUsers.users.find((u: any) => u.phoneNumber === data);
     if (user) {
+        console.log(`User with ${data}-${user.uid} not found`);
       return true;
     } else {
+        console.log(`User with ${data} not found`);
       return false;
     }
   }

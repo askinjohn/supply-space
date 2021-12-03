@@ -1,0 +1,38 @@
+<ng-container *ngIf='!otpBlock'>
+    <div class="login-info">
+        <!-- <input
+        class="simple-text-field"
+        matInput
+        type="tel"
+    
+        placeholder="Enter Mobile Number"
+      /> -->
+      <ngx-intl-tel-input
+            [cssClass]="'simple-text-field'"
+            [formControl]=mobile
+            [preferredCountries]="preferredCountries"
+            [enableAutoCountrySelect]="true"
+            [enablePlaceholder]="true"
+            [selectedCountryISO]="CountryISO.India"
+            [phoneValidation]="true"
+
+            [numberFormat]="PhoneNumberFormat.National"
+
+          >
+          </ngx-intl-tel-input>
+      <button (click)='signIn()' [disabled]='!mobile.valid || disableLogin'  mat-raised-button>
+         Send OTP
+      </button>
+    </div>
+    <div class="recaptcha">
+        <div id="recaptcha-container"></div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf='otpBlock'>
+    <supply-space-otp-block (emitOtp)='verifyOtp($event)' ></supply-space-otp-block>
+  </ng-container>
+  <ng-container *ngIf='errorMessage'>
+    <p class="error-message">*{{errorMessage}}</p>
+</ng-container>
+

@@ -5,6 +5,7 @@ import { AuthScreenComponent } from './auth-screen/auth-screen.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { MobileLoginComponent } from './mobile-login/mobile-login.component';
 
 const routes:Routes=[
 {
@@ -14,6 +15,10 @@ const routes:Routes=[
     {
       path:'',
       component:LoginComponent
+    },
+    {
+      path:'mobile',
+      component:MobileLoginComponent
     },
     {
       path:'forgot-password',

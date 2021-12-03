@@ -1,37 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 @Component({
-  selector: 'supply-space-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  selector: 'supply-space-mobile-login',
+  templateUrl: './mobile-login.component.html',
+  styleUrls: ['./mobile-login.component.scss']
 })
-export class SignUpComponent implements OnInit {
-  signUpForm: FormGroup;
-  disableSignUpButton: boolean;
-  mobileNumber: any;
-  constructor(private fb: FormBuilder, private as: AuthService,private router:Router) {
-    this.windowRef = this.as.windowRef;
-  }
+export class MobileLoginComponent implements OnInit {
+
+  mobile = new FormControl('',[Validators.required])
+  disableLogin;
   otpBlock = false;
+  windowRef: any;
+  user: any;
   separateDialCode = true;
   PhoneNumberFormat = PhoneNumberFormat;
   CountryISO = CountryISO;
+  errorMessage: string;
   preferredCountries: CountryISO[] = [
     CountryISO.India
   ];
-  windowRef;
-  errorMessage: string;
-  user;
+  mobileNumber;
+  constructor(private as:AuthService,private router:Router) { 
+    this.windowRef = this.as.windowRef
+  }
+
+
   ngOnInit(): void {
-    this.signUpForm = this.fb.group({
-      name: ['', Validators.required],
-      mobile: ['', Validators.required],
-      email: ['', Validators.required],
-    });
     setTimeout(() => {
       // console.log('This is running');
       this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
@@ -42,33 +40,33 @@ export class SignUpComponent implements OnInit {
     }, 500);
   }
 
-  signUp() {
-    this.mobileNumber = this.signUpForm.value.mobile['e164Number']
-    this.signUpForm.value.mobile =  this.mobileNumber;
-    console.log(this.signUpForm.value.mobile,'sss')
-      this.as.checkIfNumberPresent( this.mobileNumber ).subscribe((user)=>{
-        if(!user){
-            this.sendOtp();
-        }else{
-          this.disableSignUpButton = true
-          this.errorMessage = 'User already exists'
-        }
-      })
-   
-  
+  signIn(){
+    this.disableLogin = true;
+    this.mobileNumber = this.mobile.value['e164Number']
+    this.as.checkIfNumberPresent(this.mobileNumber).subscribe((user)=>{
+      console.log(user)
+      if(user){
+          this.sendOtp();
+      }else{
+        this.disableLogin = true
+        this.errorMessage = "User doesn't exists,Sign Up to access"
+      }
+    })
   }
 
   sendOtp() {
+    
     const appVerifier = this.windowRef.recaptchaVerifier;
+    console.log(this.mobileNumber)
     this.as
-      .signInWithPhone( this.mobileNumber , appVerifier)
+      .signInWithPhone(this.mobileNumber, appVerifier)
       .then((result) => {
         this.windowRef.confirmationResult = result;
         this.otpBlock = true;
       })
       .catch((e) => {
         this.errorMessage = 'Must Enter Valid number';
-        this.signUpForm.reset();
+        this.mobile.reset();
       });
   }
 
@@ -78,11 +76,11 @@ export class SignUpComponent implements OnInit {
       .then((result) => {
         this.user = result.user;
         console.log(this.user,'user')
-        this.as.updateUserProfile(this.user.uid,this.signUpForm.value);
         this.router.navigate([''])
       })
       .catch((e) => {
         this.otpBlock = false;
       });
   }
+
 }

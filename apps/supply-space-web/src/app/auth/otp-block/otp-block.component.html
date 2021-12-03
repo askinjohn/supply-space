@@ -1,0 +1,12 @@
+<div class="login-info">
+    <input
+    class="simple-text-field"
+    matInput
+    type="tel"
+    [formControl]=otp
+    placeholder="Enter OTP"
+  />
+  <button (click)='submitOtp()' [disabled]='!otp.valid || disableOtpButton '   mat-raised-button>
+      Submit OTP
+  </button>
+</div>

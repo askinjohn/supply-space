@@ -10,7 +10,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { OtpBlockComponent } from './otp-block/otp-block.component';
+import { MobileLoginComponent } from './mobile-login/mobile-login.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AuthScreenComponent,
     ForgotPasswordComponent,
     SignUpComponent,
+    OtpBlockComponent,
+    MobileLoginComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxIntlTelInputModule,
   ]
 })
 export class AuthModule { }

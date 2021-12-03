@@ -47,7 +47,9 @@
               "apps/supply-space-web/src/favicon.ico",
               "apps/supply-space-web/src/assets"
             ],
-            "styles": ["apps/supply-space-web/src/styles.scss"],
+            "styles": [
+              "apps/supply-space-web/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

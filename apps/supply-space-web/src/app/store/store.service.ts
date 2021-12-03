@@ -49,4 +49,5 @@ export class StoreService {
   getProductInfo(storeId, productId) {
     return this.ds.getObjectByKey(`stores/${storeId}/products/${productId}`);
   }
+
 }

@@ -18,7 +18,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     BrowserAnimationsModule,
     MatCardModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    
   ],
   providers: [{ provide: DatastoreService, useClass: FirebaseRealtimeService }],
   bootstrap: [AppComponent],
