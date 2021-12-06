@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 import { StoreService } from '../store.service';
 
 @Component({
@@ -14,11 +15,13 @@ export class CreateStoreFormComponent implements OnInit {
   storeForm: any;
   interval: NodeJS.Timeout;
   periodicSave = 'ENABLED';
+  userId: any;
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private ss: StoreService
+    private ss: StoreService,
+    private as: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -31,21 +34,32 @@ export class CreateStoreFormComponent implements OnInit {
       contactName: [''],
       email: [''],
     });
-
+    this.userId = this.as.user;
+    console.log(this.storeInfo)
     this.storeForm?.patchValue(this.storeInfo);
     this.autoSave();
   }
 
   autoSave() {
     this.interval = setInterval(() => {
-      console.log(this.storeForm.valid, this.periodicSave);
-      if (this.periodicSave === 'ENABLED' && this.storeForm.valid)
-        this.saveStore();
-    }, 2000);
+      if (this.periodicSave === 'ENABLED' && this.storeForm.valid) {
+        const store = this.storeForm.value;
+        store.id = this.storeId;
+        if (!this.storeInfo.createdAt) this.saveStore(store);
+        this.updateStore(store);
+      }
+    }, 4000);
   }
-  saveStore() {
-    const store = this.storeForm.value;
-    store.id = this.storeId;
+
+  updateStore(store) {
+    store.updatedAt = Date.now();
+    store.updatedBy = this.userId;
+    this.ss.addStore(store);
+  }
+
+  saveStore(store) {
+    store.createdAt = Date.now();
+    store.createdBy = this.userId;
     this.ss.addStore(store);
   }
 

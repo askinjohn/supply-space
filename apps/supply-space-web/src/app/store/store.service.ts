@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import {
   DatastoreService,
-  generateNanoid,
   objectValuesAsArray,
 } from '@supply-space/dataservice';
 import { map } from 'rxjs/operators';
@@ -10,19 +10,15 @@ import { IProduct, IStore } from '../interfaces/interface';
 
 @Injectable()
 export class StoreService {
-  constructor(private ds: DatastoreService) {}
+  constructor(private ds: DatastoreService,private aff:AngularFireFunctions) {}
+
   addStore(store) {
-    const res = this.ds.updateObjectValuesByKey(`stores/${store.id}`, store);
+    return this.ds.updateObjectValuesByKey(`stores/${store.id}`, store);
   }
 
+
   getAllStores() {
-    return this.ds
-      .getListByKey(`stores`)
-      .pipe(
-        map((stores: IStore[]) =>
-          stores.filter((store: IStore) => !store.archived)
-        )
-      );
+    return this.aff.httpsCallable('getStoresForUser')('')
   }
 
   getStoreInfo(storeId) {

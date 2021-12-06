@@ -8,13 +8,14 @@ import { AngularFireFunctions} from '@angular/fire/compat/functions'
 })
 export class AuthService {
   allUsers: any;
+  _user:any;
   constructor(
     private afa: AngularFireAuth,
     private router: Router,
     private ds: DatastoreService,
     private aff:AngularFireFunctions
   ) {
-    this.getAllUsers();
+    this.getCurrentUser()
   }
 
   login(email: string, password: string) {
@@ -24,12 +25,6 @@ export class AuthService {
       .catch((e) => console.error());
   }
 
-  getAllUsers() {
-    this.ds.getListByKey('users').subscribe((u) => {
-      this.allUsers = u;
-    });
-  }
-
   logout() {
     return this.afa.signOut().then(() => this.router.navigate(['/login']));
   }
@@ -37,11 +32,15 @@ export class AuthService {
   forgotPassword(email) {
     return this.afa.sendPasswordResetEmail(email);
   }
-  get user() {
-    return this.afa.user;
+  getCurrentUser(){
+    this.afa.user.subscribe((c)=>this._user=c.uid)
   }
 
-  get windowRef() {
+  get user(){
+    return this._user
+  }
+
+  get windowRef(){
     return window;
   }
 

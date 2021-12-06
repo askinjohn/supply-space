@@ -5,14 +5,20 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
-  <div class="stores" *ngIf="storesObs | async; let stores">
-    <div *ngFor="let store of stores" class="store-cards">
-      <supply-space-store-cards
-        [routerLink]="'stores/' + store.id"
-        (emitEditEvent)="storeDetails($event)"
-        [store]="store"
-      ></supply-space-store-cards>
+  <ng-container  *ngIf="storesObs | async; let stores ; else elseBlock">
+    <div class="stores">
+      <div *ngFor="let store of stores" class="store-cards">
+        <supply-space-store-cards
+          [routerLink]="'stores/' + store.id"
+          (emitEditEvent)="storeDetails($event)"
+          [store]="store"
+        ></supply-space-store-cards>
+      </div>
+      <div class="no-data" *ngIf="stores.length === 0">No Stores Available</div>
     </div>
-    <div class="no-data" *ngIf="stores.length === 0">No Stores Available</div>
-  </div>
+  </ng-container>
+
+  <ng-template #elseBlock>
+    <div class="no-data">Loading....</div>
+  </ng-template>
 </div>
